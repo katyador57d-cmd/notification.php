@@ -1,3 +1,26 @@
 <?php
 
-declare(strict_types=1); 
+declare(strict_types=1);
+
+class EmailSender implements Sendable, Loggable
+{
+    private string $lastLogEntry;
+
+    public function send(Notification $notification): bool
+    {
+        $this->lastLogEntry = "Email был отправлен: " . $notification->recipient . ': ' . $notification->getFormattedBody();
+
+        echo $this->lastLogEntry . "\n";
+        return true;
+    }
+
+    public function getChannelName(): string
+    {
+        return 'Email';
+    }
+
+    public function getLogEntry(): string
+    {
+      return $this->lastLogEntry;
+    }
+}
