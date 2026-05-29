@@ -2,15 +2,15 @@
 
 declare(strict_types=1); 
 
-class RegularNotification extends Notification
+class UrgentNotification extends Notification
 {
     public function getFormattedBody(): string
     {
-        return $this->message;
+        return "[URGENT] " . $this->message ;
     }
 
     public function getPriorityLabel(): string
     {
-        return 'NORMAL';
+        return 'Urgent';
     }
 }
