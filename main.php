@@ -45,9 +45,9 @@ while (true) {
             $channel =readline(" Выберите нужный канал: ");
 
             $sender = match($channel) {
-                '1' => new EmailSender(),
+                '1' => new PushSender(),
                 '2' => new SmsSender(),
-                '3' => new PushSender(),
+                '3' => new EmailSender(),
                 default => null
             };
 
